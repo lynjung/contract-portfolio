@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Warm-tinted neutrals — hint of warmth for cohesion */
+  --color-background: oklch(99% 0.005 80);
+  --color-surface: oklch(96% 0.008 80);
+  --color-text-primary: oklch(18% 0.01 60);
+  --color-text-secondary: oklch(40% 0.01 60);
+  --color-text-muted: oklch(58% 0.01 60);
+  --color-border: oklch(90% 0.008 80);
+  --color-border-subtle: oklch(92% 0.005 80);
+  --color-accent: oklch(65% 0.15 45);
+  --color-accent-muted: oklch(65% 0.15 45 / 0.15);
+
+  --font-sans: var(--font-instrument-sans);
+  --font-mono: var(--font-jetbrains-mono);
+
+  --shadow-card: 0 0 0 1px oklch(85% 0.005 80 / 0.6),
+    0 1px 3px oklch(30% 0.01 60 / 0.04), 0 4px 16px oklch(30% 0.01 60 / 0.03);
+  --shadow-card-hover: 0 0 0 1px oklch(82% 0.005 80 / 0.6),
+    0 4px 12px oklch(30% 0.01 60 / 0.06),
+    0 12px 32px oklch(30% 0.01 60 / 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: normal;
+}
+
+::selection {
+  background: oklch(90% 0.02 80);
+}
