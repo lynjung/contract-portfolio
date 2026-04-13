@@ -81,7 +81,7 @@ export default function Hero() {
     <motion.section
       ref={ref}
       style={{ opacity, y }}
-      className="h-screen flex flex-col items-center justify-center overflow-hidden px-6 md:px-8 relative"
+      className="h-screen pt-14 flex flex-col items-center justify-center overflow-hidden px-6 md:px-8 relative"
     >
       {/* ASCII video */}
       <div className="max-h-[60vh] flex items-center justify-center">
@@ -130,7 +130,7 @@ export default function Hero() {
             text="Lyn Jung"
             as="h1"
             charLevel
-            className="text-5xl md:text-7xl font-black tracking-tight text-text-primary justify-center uppercase leading-none"
+            className="text-5xl md:text-7xl font-black tracking-tight text-text-primary justify-center uppercase leading-none [text-shadow:0_2px_8px_oklch(88%_0.05_355/0.7)]"
           />
         ) : (
           <h1 className="text-5xl md:text-7xl font-black tracking-tight text-text-primary uppercase leading-none opacity-0">

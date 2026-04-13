@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" fill="white" rx="6"/>
+  <text x="16" y="26" text-anchor="middle" font-family="Palatino, 'Book Antiqua', Georgia, serif" font-size="22" font-style="italic">
+    <tspan fill="#1a1a1a">L</tspan><tspan fill="oklch(80% 0.08 355)" fill="#e8a0a8">J</tspan>
+  </text>
+</svg>
