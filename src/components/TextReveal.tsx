@@ -52,7 +52,7 @@ export default function TextReveal({
           delay + (charLevel ? 0 : wordIndex * REVEAL.staggerWords);
 
         return (
-          <span key={wordIndex} style={{ display: "inline-flex", overflow: "hidden" }}>
+          <span key={wordIndex} style={{ display: "inline-flex", overflow: "visible" }}>
             {charLevel ? (
               word.split("").map((char, charIndex) => {
                 const totalCharsBefore = words

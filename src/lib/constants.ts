@@ -17,7 +17,7 @@ export const SOCIAL_LINKS = [
   },
   {
     label: "Email",
-    href: "mailto:lyn@example.com",
+    href: "mailto:lynssjung@gmail.com",
     icon: "email",
   },
 ] as const;

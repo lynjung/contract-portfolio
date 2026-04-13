@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { instrumentSans, jetbrainsMono } from "@/lib/fonts";
+import { instrumentSans, jetbrainsMono, pinyonScript } from "@/lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${instrumentSans.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${instrumentSans.variable} ${jetbrainsMono.variable} ${pinyonScript.variable}`}>
       <body>{children}</body>
     </html>
   );

@@ -24,11 +24,8 @@ export default function Nav() {
       }`}
     >
       <div className="max-w-4xl mx-auto px-6 md:px-8 flex items-center justify-between h-14">
-        <a
-          href="#"
-          className="text-sm font-medium tracking-tight text-text-primary"
-        >
-          Lyn Jung
+        <a href="#" className="text-text-primary leading-none" style={{ fontFamily: "var(--font-pinyon)", fontSize: "2rem" }}>
+          L<span style={{ color: "oklch(80% 0.08 355)" }}>J</span>
         </a>
 
         {/* Desktop nav with animated underlines */}
@@ -84,7 +81,13 @@ export default function Nav() {
                 <motion.a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMobileOpen(false);
+                    setTimeout(() => {
+                      document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
+                    }, 150);
+                  }}
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ ...SPRING.smooth, delay: i * 0.06 }}

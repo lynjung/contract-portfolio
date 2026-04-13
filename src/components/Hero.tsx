@@ -130,10 +130,10 @@ export default function Hero() {
             text="Lyn Jung"
             as="h1"
             charLevel
-            className="text-4xl md:text-6xl font-normal tracking-tighter text-text-primary justify-center"
+            className="text-5xl md:text-7xl font-black tracking-tight text-text-primary justify-center uppercase leading-none"
           />
         ) : (
-          <h1 className="text-4xl md:text-6xl font-normal tracking-tighter text-text-primary opacity-0">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tight text-text-primary uppercase leading-none opacity-0">
             Lyn Jung
           </h1>
         )}
@@ -150,19 +150,6 @@ export default function Hero() {
         </motion.p>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={stage >= 3 ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-8 bg-text-muted/40"
-        />
-      </motion.div>
     </motion.section>
   );
 }
