@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Portfolio of Lyn Jung, a Design & Frontend Engineer and Georgia Tech junior crafting clean, meticulous digital interfaces.",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/favicon-logo.png",
   },
 };
 
