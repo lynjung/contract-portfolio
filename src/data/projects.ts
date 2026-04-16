@@ -8,26 +8,11 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Project One",
+    title: "Studyflow",
     description:
-      "A brief description of this project and what it does. Replace with your actual project details.",
-    tags: ["React", "TypeScript", "Tailwind"],
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    title: "Project Two",
-    description:
-      "Another project showcase. Describe the problem it solves and the technologies used.",
-    tags: ["Next.js", "Framer Motion", "Design"],
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    title: "Project Three",
-    description:
-      "A third project to round out the grid. Add as many as you need.",
-    tags: ["Node.js", "GraphQL", "UI/UX"],
-    liveUrl: "#",
+      "A full-stack study planning app to organize subjects, schedule sessions, track progress with analytics, and stay focused with a built-in Pomodoro timer.",
+    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind"],
+    liveUrl: "https://studyfloow.vercel.app",
+    githubUrl: "https://github.com/lynjung/studyflow",
   },
 ];
