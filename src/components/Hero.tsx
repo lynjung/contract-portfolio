@@ -126,12 +126,35 @@ export default function Hero() {
       {/* Name + title */}
       <div className="pt-6 md:pt-8 text-center shrink-0">
         {stage >= 1 ? (
-          <TextReveal
-            text="Lyn Jung"
-            as="h1"
-            charLevel
-            className="text-5xl md:text-7xl font-black tracking-tight text-text-primary justify-center uppercase leading-none [text-shadow:0_2px_8px_oklch(88%_0.05_355/0.7)]"
-          />
+          <div className="relative inline-flex items-center justify-center">
+            {/* sparkles — varied pink shades */}
+            <motion.span initial={{ opacity: 0, scale: 0, rotate: -30 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ delay: 0.70, duration: 0.4, type: "spring", stiffness: 200 }} style={{ color: "#e879a0" }} className="absolute -top-5 -left-6 text-xl pointer-events-none select-none">✦</motion.span>
+            <motion.span initial={{ opacity: 0, scale: 0 }}              animate={{ opacity: 1, scale: 1 }}              transition={{ delay: 0.80, duration: 0.3, type: "spring", stiffness: 240 }} style={{ color: "#ffd6e4" }} className="absolute -top-7 left-0 text-[10px] pointer-events-none select-none">✦</motion.span>
+            <motion.span initial={{ opacity: 0, scale: 0, rotate: 20 }}  animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ delay: 0.85, duration: 0.35, type: "spring", stiffness: 200 }} style={{ color: "#f4b8cc" }} className="absolute -top-2 -right-6 text-xs pointer-events-none select-none">✦</motion.span>
+            <motion.span initial={{ opacity: 0, scale: 0 }}              animate={{ opacity: 1, scale: 1 }}              transition={{ delay: 0.95, duration: 0.3, type: "spring", stiffness: 240 }} style={{ color: "#e879a0" }} className="absolute -top-6 right-4 text-[10px] pointer-events-none select-none">✦</motion.span>
+            <motion.span initial={{ opacity: 0, scale: 0, rotate: -15 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ delay: 1.00, duration: 0.35, type: "spring", stiffness: 200 }} style={{ color: "#ffd6e4" }} className="absolute -bottom-4 -left-7 text-xs pointer-events-none select-none">✦</motion.span>
+            <motion.span initial={{ opacity: 0, scale: 0 }}              animate={{ opacity: 1, scale: 1 }}              transition={{ delay: 1.10, duration: 0.3, type: "spring", stiffness: 240 }} style={{ color: "#c9547e" }} className="absolute -bottom-7 left-2 text-[10px] pointer-events-none select-none">✦</motion.span>
+            <motion.span initial={{ opacity: 0, scale: 0, rotate: 25 }}  animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ delay: 0.90, duration: 0.4, type: "spring", stiffness: 200 }} style={{ color: "#c9547e" }} className="absolute -bottom-5 -right-5 text-base pointer-events-none select-none">✦</motion.span>
+            <motion.span initial={{ opacity: 0, scale: 0 }}              animate={{ opacity: 1, scale: 1 }}              transition={{ delay: 1.05, duration: 0.3, type: "spring", stiffness: 240 }} style={{ color: "#f4b8cc" }} className="absolute -bottom-6 right-6 text-[10px] pointer-events-none select-none">✦</motion.span>
+            <motion.span
+              initial={{ opacity: 0, x: -8 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.4 }}
+              className="text-2xl md:text-3xl align-middle mr-3 md:mr-4 pointer-events-none select-none text-accent"
+            >✦</motion.span>
+            <TextReveal
+              text="Lyn Jung"
+              as="h1"
+              charLevel
+              className="text-5xl md:text-7xl font-black tracking-tight text-text-primary justify-center uppercase leading-none"
+            />
+            <motion.span
+              initial={{ opacity: 0, x: 8 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.4 }}
+              className="text-2xl md:text-3xl align-middle ml-3 md:ml-4 pointer-events-none select-none text-accent"
+            >✦</motion.span>
+          </div>
         ) : (
           <h1 className="text-5xl md:text-7xl font-black tracking-tight text-text-primary uppercase leading-none opacity-0">
             Lyn Jung
