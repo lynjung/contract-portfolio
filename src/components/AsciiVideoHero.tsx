@@ -41,6 +41,14 @@ export default function AsciiVideoHero({
     "loading" | "building" | "processing" | "ready"
   >("loading");
   const [progress, setProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      setIsMobile(true);
+      onReady?.();
+    }
+  }, [onReady]);
 
   const calculateGrid = useCallback(
     (cols: number) => {
@@ -117,8 +125,7 @@ export default function AsciiVideoHero({
   useEffect(() => {
     let cancelled = false;
 
-    const isMobile = window.matchMedia("(pointer: coarse)").matches;
-    if (isMobile) { onReady?.(); return; }
+    if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const bailout = setTimeout(() => {
       if (!cancelled) { cancelled = true; onReady?.(); }
@@ -224,6 +231,21 @@ export default function AsciiVideoHero({
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [renderFrame, status]);
+
+  if (isMobile) {
+    return (
+      <div className="flex flex-col items-center">
+        <video
+          src={src}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="max-h-[60vh] max-w-full rounded-2xl"
+        />
+      </div>
+    );
+  }
 
   return (
     <div ref={containerRef} className="flex flex-col items-center">
