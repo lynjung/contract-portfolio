@@ -101,7 +101,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.4 }}
-          className="mt-5 group ascii-canvas-desktop"
+          className="mt-3 group ascii-canvas-desktop"
         >
           <div className="relative px-4 py-2 rounded-full bg-surface border border-border hover:border-text-muted/30 transition-all duration-200 cursor-pointer shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)] active:scale-[0.98]">
             <input
@@ -124,7 +124,7 @@ export default function Hero() {
       )}
 
       {/* Name + title */}
-      <div className="pt-14 md:pt-2 text-center shrink-0">
+      <div className="pt-14 md:pt-1 text-center shrink-0">
         {stage >= 1 ? (
           <div className="relative inline-flex items-center justify-center">
             {/* sparkles — varied pink shades */}
