@@ -117,6 +117,10 @@ export default function AsciiVideoHero({
   useEffect(() => {
     let cancelled = false;
 
+    const bailout = setTimeout(() => {
+      if (!cancelled) { cancelled = true; onReady?.(); }
+    }, 10000);
+
     async function init() {
       setStatus("building");
       const palette = buildPalette();
@@ -124,9 +128,15 @@ export default function AsciiVideoHero({
       paletteRef.current = palette;
 
       setStatus("loading");
-      const video = await decodeVideo(src, fps, (done, total) => {
-        if (!cancelled) setProgress(Math.round((done / total) * 100));
-      });
+      let video;
+      try {
+        video = await decodeVideo(src, fps, (done, total) => {
+          if (!cancelled) setProgress(Math.round((done / total) * 100));
+        });
+      } catch {
+        if (!cancelled) { cancelled = true; clearTimeout(bailout); onReady?.(); }
+        return;
+      }
       if (cancelled) return;
 
       videoDataRef.current = { width: video.width, height: video.height };
@@ -152,6 +162,7 @@ export default function AsciiVideoHero({
       });
       if (cancelled) return;
 
+      clearTimeout(bailout);
       setStatus("ready");
       renderFrame(0);
       startPlayback();
@@ -162,6 +173,7 @@ export default function AsciiVideoHero({
 
     return () => {
       cancelled = true;
+      clearTimeout(bailout);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

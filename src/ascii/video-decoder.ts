@@ -52,7 +52,8 @@ export async function decodeVideo(
 
     video.currentTime = time;
     await new Promise<void>((resolve) => {
-      video.onseeked = () => resolve();
+      const timeout = setTimeout(resolve, 500);
+      video.onseeked = () => { clearTimeout(timeout); resolve(); };
     });
 
     ctx.drawImage(video, 0, 0, width, height);
