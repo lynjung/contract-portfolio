@@ -42,9 +42,14 @@ export default function AsciiVideoHero({
   >("loading");
   const [progress, setProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    setIsMobile(window.matchMedia("(pointer: coarse)").matches);
+    const mobile = window.matchMedia("(pointer: coarse)").matches;
+    setIsMobile(mobile);
+    if (mobile && mobileVideoRef.current) {
+      mobileVideoRef.current.play().catch(() => {});
+    }
   }, []);
 
   const calculateGrid = useCallback(
@@ -231,15 +236,16 @@ export default function AsciiVideoHero({
 
   return (
     <div ref={containerRef} className="flex flex-col items-center">
-      {/* Pre-rendered video for mobile — always in DOM so iOS autoplay fires */}
+      {/* Pre-rendered video for mobile — never display:none so iOS autoplay works */}
       <video
+        ref={mobileVideoRef}
         src="/ascii-hero.mp4"
         autoPlay
         muted
         loop
         playsInline
         onCanPlay={() => { if (isMobile) onReady?.(); }}
-        className={`max-h-[60vh] max-w-full rounded-2xl ${isMobile ? "block" : "hidden"}`}
+        className={`max-h-[60vh] max-w-full rounded-2xl ${isMobile ? "block" : "opacity-0 absolute pointer-events-none w-0 h-0"}`}
       />
 
       {!isMobile && status !== "ready" && (
