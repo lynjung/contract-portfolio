@@ -51,9 +51,12 @@ export default function AsciiVideoHero({
   }, []);
 
   useEffect(() => {
-    if (isMobile && mobileVideoRef.current) {
-      mobileVideoRef.current.play().catch(() => {});
-    }
+    const v = mobileVideoRef.current;
+    if (!isMobile || !v) return;
+    // React doesn't set the muted HTML attribute — iOS Safari requires it for autoplay
+    v.setAttribute("muted", "");
+    v.muted = true;
+    v.play().catch(() => {});
   }, [isMobile]);
 
   const calculateGrid = useCallback(
