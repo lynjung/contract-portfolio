@@ -254,7 +254,7 @@ export default function AsciiVideoHero({
       <div ref={mobileContainerRef} className="ascii-video-mobile" />
 
       {status !== "ready" && (
-        <div className="flex flex-col items-center justify-center py-32 gap-3">
+        <div className="ascii-canvas-desktop flex flex-col items-center justify-center py-32 gap-3">
           <div className="w-48 h-px bg-border relative overflow-hidden">
             <div
               className="absolute left-0 top-0 h-full bg-text-muted transition-all duration-300"
