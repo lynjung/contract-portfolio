@@ -233,7 +233,7 @@ export default function AsciiVideoHero({
     return (
       <div className="flex items-center justify-center">
         <video
-          src="/ascii-hero.webm"
+          src="/ascii-hero.mp4"
           autoPlay
           muted
           loop
