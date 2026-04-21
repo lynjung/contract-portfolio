@@ -229,25 +229,20 @@ export default function AsciiVideoHero({
     return () => window.removeEventListener("resize", handleResize);
   }, [renderFrame, status]);
 
-  if (isMobile) {
-    return (
-      <div className="flex items-center justify-center">
-        <video
-          src="/ascii-hero.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          onCanPlay={() => onReady?.()}
-          className="max-h-[60vh] max-w-full rounded-2xl"
-        />
-      </div>
-    );
-  }
-
   return (
     <div ref={containerRef} className="flex flex-col items-center">
-      {status !== "ready" && (
+      {/* Pre-rendered video for mobile — always in DOM so iOS autoplay fires */}
+      <video
+        src="/ascii-hero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        onCanPlay={() => { if (isMobile) onReady?.(); }}
+        className={`max-h-[60vh] max-w-full rounded-2xl ${isMobile ? "block" : "hidden"}`}
+      />
+
+      {!isMobile && status !== "ready" && (
         <div className="flex flex-col items-center justify-center py-32 gap-3">
           <div className="w-48 h-px bg-border relative overflow-hidden">
             <div
@@ -265,7 +260,7 @@ export default function AsciiVideoHero({
       <canvas
         ref={canvasRef}
         className={`max-h-[60vh] max-w-full h-auto rounded-2xl transition-opacity duration-500 ${
-          status === "ready" ? "opacity-100" : "opacity-0"
+          !isMobile && status === "ready" ? "opacity-100" : "opacity-0 hidden"
         }`}
         aria-hidden="true"
       />
