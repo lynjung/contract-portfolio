@@ -58,7 +58,7 @@ export default function AsciiVideoHero({
     v.setAttribute("loop", "");
     v.setAttribute("playsinline", "");
     v.muted = true;
-    v.className = "max-h-[60vh] max-w-full rounded-2xl";
+    v.className = "max-h-[60vh] w-full object-cover rounded-none";
     v.addEventListener("canplay", () => onReady?.(), { once: true });
 
     container.appendChild(v);
@@ -251,7 +251,7 @@ export default function AsciiVideoHero({
   return (
     <div ref={containerRef} className="flex flex-col items-center">
       {/* Mobile video container — video created imperatively so muted attr is set before DOM insertion */}
-      <div ref={mobileContainerRef} className="ascii-video-mobile" />
+      <div ref={mobileContainerRef} className="ascii-video-mobile w-full" />
 
       {status !== "ready" && (
         <div className="ascii-canvas-desktop flex flex-col items-center justify-center py-32 gap-3">

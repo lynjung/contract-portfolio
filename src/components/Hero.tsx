@@ -124,7 +124,7 @@ export default function Hero() {
       )}
 
       {/* Name + title */}
-      <div className="pt-12 md:pt-6 text-center shrink-0">
+      <div className="pt-16 md:pt-6 text-center shrink-0">
         {stage >= 1 ? (
           <div className="relative inline-flex items-center justify-center">
             {/* sparkles — varied pink shades */}
