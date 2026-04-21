@@ -84,7 +84,7 @@ export default function Hero() {
       className="h-screen pt-14 flex flex-col items-center justify-center overflow-hidden px-0 md:px-8 relative"
     >
       {/* ASCII video */}
-      <div className="max-h-[60vh] md:max-h-[45vh] lg:max-h-[60vh] flex items-center justify-center w-full px-0 md:px-6">
+      <div className="max-h-[60vh] flex items-center justify-center w-full px-0 md:px-6">
         <AsciiVideoHero
           src="/portfolio_video.mp4"
           fps={12}
@@ -101,7 +101,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.4 }}
-          className="mt-5 md:mt-2 lg:mt-5 group ascii-canvas-desktop"
+          className="mt-5 group ascii-canvas-desktop"
         >
           <div className="relative px-4 py-2 rounded-full bg-surface border border-border hover:border-text-muted/30 transition-all duration-200 cursor-pointer shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)] active:scale-[0.98]">
             <input
@@ -124,7 +124,7 @@ export default function Hero() {
       )}
 
       {/* Name + title */}
-      <div className="pt-14 md:pt-0 md:mt-0 lg:mt-0 lg:pt-8 text-center shrink-0">
+      <div className="pt-6 md:pt-4 lg:pt-8 text-center shrink-0">
         {stage >= 1 ? (
           <div className="relative inline-flex items-center justify-center">
             {/* sparkles — varied pink shades */}
