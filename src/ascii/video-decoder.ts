@@ -43,38 +43,52 @@ export async function decodeVideo(
   const isMobile = window.matchMedia("(pointer: coarse)").matches;
 
   if (isMobile) {
-    // Play-through capture: avoids unreliable seek on mobile Safari
-    return new Promise((resolve, reject) => {
+    // Play-through capture at reduced FPS to avoid seek stalls on mobile Safari
+    const mobileFps = Math.min(targetFps, 6);
+    const mobileInterval = 1 / mobileFps;
+    const mobileDelay = Math.round(mobileInterval * 1000);
+    const mobileTotal = Math.floor(duration * mobileFps);
+
+    return new Promise((resolve) => {
       const frames: ImageData[] = [];
       const delays: number[] = [];
       let lastCaptureTime = -1;
+      let lastFrameAt = Date.now();
 
-      video.ontimeupdate = () => {
-        const t = video.currentTime;
-        if (t - lastCaptureTime >= frameInterval * 0.9) {
-          lastCaptureTime = t;
-          ctx.drawImage(video, 0, 0, width, height);
-          frames.push(ctx.getImageData(0, 0, width, height));
-          delays.push(delay);
-          onProgress?.(frames.length, totalFrames);
-        }
-      };
-
-      video.onended = () => {
+      const finish = () => {
+        clearInterval(stallCheck);
+        video.ontimeupdate = null;
+        video.onended = null;
         resolve({ frames, delays, width, height });
       };
 
-      video.onerror = () => reject(new Error("Playback error"));
-      setTimeout(() => resolve({ frames, delays, width, height }), (duration + 5) * 1000);
+      // Stall watchdog: if no new frame in 2s, try to kick video or give up
+      const stallCheck = setInterval(() => {
+        if (Date.now() - lastFrameAt > 2000) {
+          if (frames.length > 0) { finish(); return; }
+          // Try to unstick
+          video.play().catch(() => finish());
+          lastFrameAt = Date.now();
+        }
+      }, 1000);
 
-      video.playbackRate = 4;
-      video.play().catch(() => {
-        // Autoplay blocked — fall back to seek
-        video.ontimeupdate = null;
-        video.onended = null;
-        seekDecode(video, ctx, width, height, totalFrames, frameInterval, delay, onProgress)
-          .then(resolve).catch(reject);
-      });
+      video.ontimeupdate = () => {
+        const t = video.currentTime;
+        if (t - lastCaptureTime >= mobileInterval * 0.9) {
+          lastCaptureTime = t;
+          lastFrameAt = Date.now();
+          ctx.drawImage(video, 0, 0, width, height);
+          frames.push(ctx.getImageData(0, 0, width, height));
+          delays.push(mobileDelay);
+          onProgress?.(frames.length, mobileTotal);
+        }
+      };
+
+      video.onended = finish;
+      setTimeout(finish, (duration / video.playbackRate + 6) * 1000);
+
+      video.playbackRate = 3;
+      video.play().catch(finish);
     });
   }
 
