@@ -81,7 +81,7 @@ export default function Hero() {
     <motion.section
       ref={ref}
       style={{ opacity, y }}
-      className="h-screen pt-14 flex flex-col items-center justify-center overflow-hidden px-2 md:px-8 relative"
+      className="h-screen pt-14 flex flex-col items-center justify-center overflow-hidden px-0 md:px-8 relative"
     >
       {/* ASCII video */}
       <div className="max-h-[60vh] flex items-center justify-center w-full px-0 md:px-6">
@@ -124,7 +124,7 @@ export default function Hero() {
       )}
 
       {/* Name + title */}
-      <div className="pt-10 md:pt-8 text-center shrink-0">
+      <div className="pt-14 md:pt-8 text-center shrink-0">
         {stage >= 1 ? (
           <div className="relative inline-flex items-center justify-center">
             {/* sparkles — varied pink shades */}
