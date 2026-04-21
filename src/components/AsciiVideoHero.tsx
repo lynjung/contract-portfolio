@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useLayoutEffect, useState, useCallback } from "react";
 import { buildPalette, type Palette } from "@/ascii/palette";
 import { decodeVideo } from "@/ascii/video-decoder";
 import { FrameBuffer } from "@/ascii/buffer";
@@ -44,13 +44,17 @@ export default function AsciiVideoHero({
   const [isMobile, setIsMobile] = useState(false);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
+  // useLayoutEffect fires before paint so iOS sees the video as visible from the start
+  useLayoutEffect(() => {
     const mobile = window.matchMedia("(pointer: coarse)").matches;
     setIsMobile(mobile);
-    if (mobile && mobileVideoRef.current) {
+  }, []);
+
+  useEffect(() => {
+    if (isMobile && mobileVideoRef.current) {
       mobileVideoRef.current.play().catch(() => {});
     }
-  }, []);
+  }, [isMobile]);
 
   const calculateGrid = useCallback(
     (cols: number) => {
