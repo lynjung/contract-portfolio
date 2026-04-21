@@ -41,14 +41,31 @@ export default function AsciiVideoHero({
     "loading" | "building" | "processing" | "ready"
   >("loading");
   const [progress, setProgress] = useState(0);
-  const mobileVideoRef = useRef<HTMLVideoElement>(null);
+  const mobileContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const v = mobileVideoRef.current;
-    if (!v) return;
+    const container = mobileContainerRef.current;
+    if (!container) return;
+
+    const isMobile = window.matchMedia("(pointer: coarse)").matches;
+    if (!isMobile) return;
+
+    // Create imperatively so muted attribute is set before DOM insertion
+    const v = document.createElement("video");
+    v.setAttribute("src", "/ascii-hero.mp4");
+    v.setAttribute("autoplay", "");
     v.setAttribute("muted", "");
+    v.setAttribute("loop", "");
+    v.setAttribute("playsinline", "");
     v.muted = true;
+    v.className = "max-h-[60vh] max-w-full rounded-2xl";
+    v.addEventListener("canplay", () => onReady?.(), { once: true });
+
+    container.appendChild(v);
     v.play().catch(() => {});
+
+    return () => { container.innerHTML = ""; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const calculateGrid = useCallback(
@@ -233,17 +250,8 @@ export default function AsciiVideoHero({
 
   return (
     <div ref={containerRef} className="flex flex-col items-center">
-      {/* Pre-rendered ASCII video for mobile — shown/hidden via CSS media query only */}
-      <video
-        ref={mobileVideoRef}
-        src="/ascii-hero.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        onCanPlay={() => onReady?.()}
-        className="ascii-video-mobile max-h-[60vh] max-w-full rounded-2xl"
-      />
+      {/* Mobile video container — video created imperatively so muted attr is set before DOM insertion */}
+      <div ref={mobileContainerRef} className="ascii-video-mobile" />
 
       {status !== "ready" && (
         <div className="flex flex-col items-center justify-center py-32 gap-3">
