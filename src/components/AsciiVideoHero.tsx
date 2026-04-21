@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useLayoutEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { buildPalette, type Palette } from "@/ascii/palette";
 import { decodeVideo } from "@/ascii/video-decoder";
 import { FrameBuffer } from "@/ascii/buffer";
@@ -41,23 +41,15 @@ export default function AsciiVideoHero({
     "loading" | "building" | "processing" | "ready"
   >("loading");
   const [progress, setProgress] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
-
-  // useLayoutEffect fires before paint so iOS sees the video as visible from the start
-  useLayoutEffect(() => {
-    const mobile = window.matchMedia("(pointer: coarse)").matches;
-    setIsMobile(mobile);
-  }, []);
 
   useEffect(() => {
     const v = mobileVideoRef.current;
-    if (!isMobile || !v) return;
-    // React doesn't set the muted HTML attribute — iOS Safari requires it for autoplay
+    if (!v) return;
     v.setAttribute("muted", "");
     v.muted = true;
     v.play().catch(() => {});
-  }, [isMobile]);
+  }, []);
 
   const calculateGrid = useCallback(
     (cols: number) => {
@@ -133,8 +125,6 @@ export default function AsciiVideoHero({
   // Initial load: build palette, decode video
   useEffect(() => {
     let cancelled = false;
-
-    if (isMobile) return;
 
     const bailout = setTimeout(() => {
       if (!cancelled) { cancelled = true; onReady?.(); }
@@ -243,7 +233,7 @@ export default function AsciiVideoHero({
 
   return (
     <div ref={containerRef} className="flex flex-col items-center">
-      {/* Pre-rendered video for mobile — never display:none so iOS autoplay works */}
+      {/* Pre-rendered ASCII video for mobile — shown/hidden via CSS media query only */}
       <video
         ref={mobileVideoRef}
         src="/ascii-hero.mp4"
@@ -251,11 +241,11 @@ export default function AsciiVideoHero({
         muted
         loop
         playsInline
-        onCanPlay={() => { if (isMobile) onReady?.(); }}
-        className={`max-h-[60vh] max-w-full rounded-2xl ${isMobile ? "block" : "opacity-0 absolute pointer-events-none w-0 h-0"}`}
+        onCanPlay={() => onReady?.()}
+        className="ascii-video-mobile max-h-[60vh] max-w-full rounded-2xl"
       />
 
-      {!isMobile && status !== "ready" && (
+      {status !== "ready" && (
         <div className="flex flex-col items-center justify-center py-32 gap-3">
           <div className="w-48 h-px bg-border relative overflow-hidden">
             <div
@@ -272,8 +262,8 @@ export default function AsciiVideoHero({
       )}
       <canvas
         ref={canvasRef}
-        className={`max-h-[60vh] max-w-full h-auto rounded-2xl transition-opacity duration-500 ${
-          !isMobile && status === "ready" ? "opacity-100" : "opacity-0 hidden"
+        className={`ascii-canvas-desktop max-h-[60vh] max-w-full h-auto rounded-2xl transition-opacity duration-500 ${
+          status === "ready" ? "opacity-100" : "opacity-0"
         }`}
         aria-hidden="true"
       />
