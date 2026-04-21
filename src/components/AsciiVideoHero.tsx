@@ -117,6 +117,9 @@ export default function AsciiVideoHero({
   useEffect(() => {
     let cancelled = false;
 
+    const isMobile = window.matchMedia("(pointer: coarse)").matches;
+    if (isMobile) { onReady?.(); return; }
+
     const bailout = setTimeout(() => {
       if (!cancelled) { cancelled = true; onReady?.(); }
     }, 10000);
