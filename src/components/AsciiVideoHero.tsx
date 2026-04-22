@@ -58,13 +58,20 @@ export default function AsciiVideoHero({
     v.setAttribute("loop", "");
     v.setAttribute("playsinline", "");
     v.muted = true;
-    v.className = "max-h-[60vh] w-full object-cover rounded-none";
+    v.className = "max-h-[60vh] w-full object-cover rounded-2xl";
     v.addEventListener("canplay", () => onReady?.(), { once: true });
 
     container.appendChild(v);
     v.play().catch(() => {});
 
-    return () => { container.innerHTML = ""; };
+    // iOS fallback: play on first touch anywhere if autoplay was blocked
+    const playOnTouch = () => { v.play().catch(() => {}); };
+    document.addEventListener("touchstart", playOnTouch, { once: true, passive: true });
+
+    return () => {
+      document.removeEventListener("touchstart", playOnTouch);
+      container.innerHTML = "";
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
