@@ -41,39 +41,6 @@ export default function AsciiVideoHero({
     "loading" | "building" | "processing" | "ready"
   >("loading");
   const [progress, setProgress] = useState(0);
-  const mobileContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = mobileContainerRef.current;
-    if (!container) return;
-
-    const isMobile = window.matchMedia("(pointer: coarse)").matches;
-    if (!isMobile) return;
-
-    // Create imperatively so muted attribute is set before DOM insertion
-    const v = document.createElement("video");
-    v.setAttribute("src", "/ascii-hero.mp4");
-    v.setAttribute("autoplay", "");
-    v.setAttribute("muted", "");
-    v.setAttribute("loop", "");
-    v.setAttribute("playsinline", "");
-    v.muted = true;
-    v.className = "max-h-[60vh] w-full object-cover rounded-2xl";
-    v.addEventListener("canplay", () => onReady?.(), { once: true });
-
-    container.appendChild(v);
-    v.play().catch(() => {});
-
-    // iOS fallback: play on first touch anywhere if autoplay was blocked
-    const playOnTouch = () => { v.play().catch(() => {}); };
-    document.addEventListener("touchstart", playOnTouch, { once: true, passive: true });
-
-    return () => {
-      document.removeEventListener("touchstart", playOnTouch);
-      container.innerHTML = "";
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const calculateGrid = useCallback(
     (cols: number) => {
@@ -257,8 +224,16 @@ export default function AsciiVideoHero({
 
   return (
     <div ref={containerRef} className="flex flex-col items-center">
-      {/* Mobile video container — video created imperatively so muted attr is set before DOM insertion */}
-      <div ref={mobileContainerRef} className="ascii-video-mobile w-full" />
+      {/* React 19 correctly serializes muted as an HTML attribute, enabling iOS autoplay */}
+      <video
+        src="/ascii-hero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        onCanPlay={() => onReady?.()}
+        className="ascii-video-mobile max-h-[60vh] w-full object-cover rounded-2xl"
+      />
 
       {status !== "ready" && (
         <div className="ascii-canvas-desktop flex flex-col items-center justify-center py-32 gap-3">
