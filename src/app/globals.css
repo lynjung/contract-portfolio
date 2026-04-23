@@ -42,11 +42,25 @@ body {
   background: oklch(93% 0.04 355);
 }
 
-/* Show pre-rendered ASCII video only on touch devices */
-.ascii-video-mobile { display: none; }
+/* Mobile video: never display:none so iOS autoplay is never blocked */
+.ascii-video-mobile {
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
 .ascii-canvas-desktop { display: block; }
 
 @media (pointer: coarse) {
-  .ascii-video-mobile { display: block; }
+  .ascii-video-mobile {
+    position: static;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    pointer-events: auto;
+  }
   .ascii-canvas-desktop { display: none; }
 }
