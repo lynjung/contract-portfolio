@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { SPRING } from "@/lib/animation";
 
@@ -29,11 +30,15 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ ...SPRING.gentle, delay: 0.1 }}
-          className="aspect-[4/5] bg-surface overflow-hidden rounded-sm"
+          className="relative aspect-[4/5] bg-surface overflow-hidden rounded-sm"
         >
-          <div className="w-full h-full flex items-center justify-center text-text-muted text-xs">
-            Photo
-          </div>
+          <Image
+            src="/bio.jpg"
+            alt="Lyn Jung"
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
         </motion.div>
 
         {/* Bio — no heading, editorial voice */}
