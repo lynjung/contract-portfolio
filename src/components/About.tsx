@@ -24,25 +24,25 @@ export default function About() {
       id="about"
       className="w-full max-w-6xl mx-auto px-6 md:px-8 py-28 md:py-40"
     >
-      <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-10 md:gap-20 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_1.6fr] gap-10 md:gap-16 items-start">
         {/* Photo — editorial, minimal chrome */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ ...SPRING.gentle, delay: 0.1 }}
-          className="relative aspect-[4/5] bg-surface overflow-hidden rounded-sm"
+          className="relative aspect-[3/4] bg-surface overflow-hidden rounded-2xl shadow-card mx-auto w-full max-w-xs md:max-w-none"
         >
           <Image
             src="/bio.jpg"
             alt="Lyn Jung"
             fill
-            className="object-cover object-top"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover object-center"
+            sizes="(max-width: 768px) 320px, 25vw"
           />
         </motion.div>
 
         {/* Bio — no heading, editorial voice */}
-        <div className="md:pt-8">
+        <div className="md:pt-6">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
