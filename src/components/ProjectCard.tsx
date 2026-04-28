@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
 import type { Project } from "@/data/projects";
 import { SPRING } from "@/lib/animation";
@@ -94,8 +95,19 @@ export default function ProjectCard({
               )}
             </div>
           </div>
-          <div className="text-sm font-mono text-text-muted">
-            {project.tags.join(", ")}
+          <div className="flex flex-col gap-6">
+            {project.image && (
+              <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-surface shadow-card">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                />
+              </div>
+            )}
+            <p className="text-sm font-mono text-text-muted">{project.tags.join(", ")}</p>
           </div>
         </div>
       </div>
@@ -129,8 +141,20 @@ export default function ProjectCard({
       />
 
       {/* Thumbnail */}
-      <div className="bg-surface flex items-center justify-center text-text-muted text-xs aspect-[16/10] rounded-t-lg">
-        Thumbnail
+      <div className="relative bg-surface aspect-[16/10] rounded-t-lg overflow-hidden">
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-text-muted text-xs">
+            {project.title}
+          </div>
+        )}
       </div>
 
       {/* Content */}

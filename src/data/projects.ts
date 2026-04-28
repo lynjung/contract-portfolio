@@ -2,6 +2,7 @@ export interface Project {
   title: string;
   description: string;
   tags: string[];
+  image?: string;
   liveUrl?: string;
   githubUrl?: string;
 }
@@ -9,6 +10,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Studyflow",
+    image: "/projects/studyflow.png",
     description:
       "A full-stack study planning app to organize subjects, schedule sessions, track progress with analytics, and stay focused with a built-in Pomodoro timer.",
     tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind"],
