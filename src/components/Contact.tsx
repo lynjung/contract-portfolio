@@ -28,14 +28,21 @@ export default function Contact() {
           or just a good conversation about the craft.
         </p>
 
+        <a
+          href="mailto:lynssjung@gmail.com"
+          className="inline-block text-base text-text-primary hover:text-accent transition-colors mb-6"
+        >
+          lynssjung@gmail.com
+        </a>
+
         <div className="flex items-center gap-2 text-sm text-text-muted">
-          {SOCIAL_LINKS.map((link, i) => (
+          {SOCIAL_LINKS.filter((l) => l.icon !== "email").map((link, i) => (
             <span key={link.label} className="flex items-center gap-2">
               {i > 0 && <span aria-hidden="true">/</span>}
               <a
                 href={link.href}
-                target={link.icon === "email" ? undefined : "_blank"}
-                rel={link.icon === "email" ? undefined : "noopener noreferrer"}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-text-primary hover:text-accent transition-colors"
               >
                 {link.label}

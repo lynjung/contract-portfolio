@@ -102,7 +102,7 @@ export default function ProjectCard({
                 src={project.image}
                 alt={project.title}
                 fill
-                className="object-cover object-top"
+                className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, 40vw"
               />
             </div>
@@ -145,7 +145,7 @@ export default function ProjectCard({
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover object-top"
+            className="object-cover object-center"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
