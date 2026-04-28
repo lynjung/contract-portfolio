@@ -22,7 +22,7 @@ export default function About() {
     <section
       ref={ref}
       id="about"
-      className="w-full max-w-6xl mx-auto px-6 md:px-8 py-28 md:py-40"
+      className="w-full max-w-4xl mx-auto px-6 md:px-8 py-28 md:py-40"
     >
       <div className="grid grid-cols-1 md:grid-cols-[1fr_1.6fr] gap-10 md:gap-16 items-start">
         {/* Photo — editorial, minimal chrome */}
