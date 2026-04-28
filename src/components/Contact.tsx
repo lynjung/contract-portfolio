@@ -20,6 +20,9 @@ export default function Contact() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={SPRING.smooth}
       >
+        <h2 className="text-3xl md:text-5xl font-light tracking-tight text-text-primary mb-8">
+          Let&apos;s work together
+        </h2>
         <p className="text-text-secondary text-base leading-relaxed mb-6 max-w-md">
           Open to design engineering, frontend, and product design roles —
           or just a good conversation about the craft.
