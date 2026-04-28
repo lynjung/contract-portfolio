@@ -72,6 +72,7 @@ export default function ProjectCard({
             <p className="text-text-secondary text-sm leading-relaxed mb-4 max-w-sm">
               {project.description}
             </p>
+            <p className="text-[11px] font-mono text-text-muted mb-4">{project.tags.join(", ")}</p>
             <div className="flex items-center gap-4">
               {project.liveUrl && (
                 <a
@@ -95,20 +96,17 @@ export default function ProjectCard({
               )}
             </div>
           </div>
-          <div className="flex flex-col gap-6">
-            {project.image && (
-              <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-surface shadow-card">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                />
-              </div>
-            )}
-            <p className="text-sm font-mono text-text-muted">{project.tags.join(", ")}</p>
-          </div>
+          {project.image && (
+            <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-surface shadow-card">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 40vw"
+              />
+            </div>
+          )}
         </div>
       </div>
     );
