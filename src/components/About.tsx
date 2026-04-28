@@ -50,7 +50,7 @@ export default function About() {
             className="space-y-5 text-text-secondary text-base leading-relaxed max-w-prose"
           >
             <p>
-              I&apos;m a design and frontend engineer studying at Georgia Tech,
+              I&apos;m a Computational Media major studying at Georgia Tech,
               where I bring a creative and strategic eye to every interface I
               build.
             </p>
