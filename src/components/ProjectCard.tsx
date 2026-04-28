@@ -66,6 +66,7 @@ export default function ProjectCard({
       <div className="border-b border-border pb-12">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8 md:gap-16 items-start">
           <div>
+            <p className="text-[11px] font-mono text-text-muted uppercase tracking-widest mb-2">01</p>
             <h3 className="text-2xl md:text-3xl font-normal tracking-tight mb-3">
               {project.title}
             </h3>

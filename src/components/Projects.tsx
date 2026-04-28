@@ -11,15 +11,18 @@ export default function Projects() {
   return (
     <section id="projects" className="w-full max-w-4xl mx-auto px-6 md:px-8 py-20 md:py-32">
       {/* Large editorial heading */}
-      <motion.h2
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={SPRING.smooth}
-        className="text-3xl md:text-5xl font-light tracking-tight text-text-primary mb-16"
+        className="mb-16"
       >
-        Work
-      </motion.h2>
+        <p className="text-[11px] font-mono text-text-muted uppercase tracking-widest mb-3">Selected Work</p>
+        <h2 className="text-3xl md:text-5xl font-light tracking-tight text-text-primary">
+          Projects
+        </h2>
+      </motion.div>
 
       {/* Featured project — editorial row, not a card */}
       {featured && (
