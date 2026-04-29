@@ -19,11 +19,13 @@ const SPOTLIGHT = {
 interface ProjectCardProps {
   project: Project;
   featured?: boolean;
+  index?: number;
 }
 
 export default function ProjectCard({
   project,
   featured = false,
+  index = 0,
 }: ProjectCardProps) {
   // Magnetic hover — only for grid cards, not featured
   const cardRef = useRef<HTMLDivElement>(null);
@@ -66,7 +68,7 @@ export default function ProjectCard({
       <div className="border-b border-border pb-12">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8 md:gap-16 items-start">
           <div>
-            <p className="text-[11px] font-mono text-text-muted uppercase tracking-widest mb-2">01</p>
+            <p className="text-[11px] font-mono text-text-muted uppercase tracking-widest mb-2">{String(index + 1).padStart(2, "0")}</p>
             <h3 className="text-2xl md:text-3xl font-normal tracking-tight mb-3">
               {project.title}
             </h3>

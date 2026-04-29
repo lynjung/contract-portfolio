@@ -6,8 +6,6 @@ import { projects } from "@/data/projects";
 import { SPRING } from "@/lib/animation";
 
 export default function Projects() {
-  const [featured, ...rest] = projects;
-
   return (
     <section id="projects" className="w-full max-w-4xl mx-auto px-6 md:px-8 py-20 md:py-32">
       {/* Large editorial heading */}
@@ -24,33 +22,17 @@ export default function Projects() {
         </h2>
       </motion.div>
 
-      {/* Featured project — editorial row, not a card */}
-      {featured && (
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={SPRING.smooth}
-          className="mb-12"
-        >
-          <ProjectCard project={featured} featured />
-        </motion.div>
-      )}
-
-      {/* Remaining projects — grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {rest.map((project, i) => (
+      {/* All projects — editorial rows */}
+      <div className="flex flex-col gap-12">
+        {projects.map((project, i) => (
           <motion.div
             key={project.title}
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{
-              ...SPRING.smooth,
-              delay: i * 0.1,
-            }}
+            transition={{ ...SPRING.smooth, delay: i * 0.08 }}
           >
-            <ProjectCard project={project} />
+            <ProjectCard project={project} featured index={i} />
           </motion.div>
         ))}
       </div>
