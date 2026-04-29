@@ -9,6 +9,15 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Mount Money",
+    image: "/projects/mountmoney.png",
+    description:
+      "A mobile-first finance app for international students managing accounts in both KRW and USD. Features live exchange rate conversion, an interactive monthly calendar, customizable account theming, and AI-powered budget recommendations via Google Gemini.",
+    tags: ["React", "Vite", "Gemini API", "PWA"],
+    liveUrl: "https://mountmoney.vercel.app",
+    githubUrl: "https://github.com/lynjung/mount",
+  },
+  {
     title: "Studyflow",
     image: "/projects/studyflow.png",
     description:
