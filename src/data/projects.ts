@@ -9,7 +9,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Mount Money",
+    title: "Mount",
     image: "/projects/mountmoney.png",
     description:
       "A mobile-first finance app for international students managing accounts in both KRW and USD. Features live exchange rate conversion, an interactive monthly calendar, customizable account theming, and AI-powered budget recommendations via Google Gemini.",
