@@ -36,7 +36,7 @@ export default function About() {
             src="/bio.jpg"
             alt="Lyn Jung"
             fill
-            className="object-cover object-center"
+            className="object-cover object-center mix-blend-luminosity"
             sizes="(max-width: 768px) 320px, 25vw"
           />
         </motion.div>
