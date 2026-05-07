@@ -30,15 +30,19 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ ...SPRING.gentle, delay: 0.1 }}
-          className="relative aspect-[3/4] bg-surface overflow-hidden rounded-2xl shadow-card mx-auto w-full max-w-xs md:max-w-none"
+          className="relative mx-auto w-full max-w-xs md:max-w-none"
         >
-          <Image
-            src="/bio.jpg"
-            alt="Lyn Jung"
-            fill
-            className="object-cover object-center mix-blend-luminosity"
-            sizes="(max-width: 768px) 320px, 25vw"
-          />
+          {/* Offset border — shifted right and down */}
+          <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl border border-accent/60" />
+          <div className="relative aspect-[3/4] bg-surface overflow-hidden rounded-2xl shadow-card">
+            <Image
+              src="/bio.jpg"
+              alt="Lyn Jung"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 320px, 25vw"
+            />
+          </div>
         </motion.div>
 
         {/* Bio — no heading, editorial voice */}
