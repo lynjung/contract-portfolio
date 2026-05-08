@@ -167,7 +167,7 @@ export default function Hero() {
             stage >= 2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }
           }
           transition={SPRING.smooth}
-          className="mt-3 text-sm md:text-base text-text-secondary font-light"
+          className="mt-3 text-xs md:text-sm text-text-secondary font-medium uppercase tracking-widest"
         >
           Design &amp; Frontend Engineer
         </motion.p>

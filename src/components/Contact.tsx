@@ -19,7 +19,8 @@ export default function Contact() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={SPRING.smooth}
       >
-        <h2 className="text-3xl md:text-4xl font-normal tracking-tight mb-4">Contact</h2>
+        <p className="text-[11px] font-mono text-text-muted uppercase tracking-widest mb-3">Get in Touch</p>
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-4">Contact</h2>
         <p className="text-text-secondary text-base leading-relaxed mb-6 max-w-md">
           Open to design engineering, frontend, and product design roles —
           or just a good conversation about the craft.
