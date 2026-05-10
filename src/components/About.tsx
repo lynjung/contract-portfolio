@@ -33,7 +33,7 @@ export default function About() {
           className="relative mx-auto w-full max-w-xs md:max-w-none"
         >
           {/* Offset border — shifted right and down */}
-          <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl border border-accent-brown/50" />
+          <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl border border-accent/60" />
           <div className="relative aspect-[3/4] bg-surface overflow-hidden rounded-2xl shadow-card">
             <Image
               src="/bio.jpg"
