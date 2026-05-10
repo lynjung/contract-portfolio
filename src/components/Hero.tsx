@@ -146,7 +146,7 @@ export default function Hero() {
               text="Lyn Jung"
               as="h1"
               charLevel
-              className="text-5xl md:text-7xl font-black tracking-tight text-text-primary justify-center uppercase leading-none"
+              className="text-5xl md:text-7xl font-black tracking-tight text-accent-brown justify-center uppercase leading-none"
             />
             <motion.span
               initial={{ opacity: 0, x: 8 }}
@@ -156,7 +156,7 @@ export default function Hero() {
             >✦</motion.span>
           </div>
         ) : (
-          <h1 className="text-5xl md:text-7xl font-black tracking-tight text-text-primary uppercase leading-none opacity-0">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tight text-accent-brown uppercase leading-none opacity-0">
             Lyn Jung
           </h1>
         )}

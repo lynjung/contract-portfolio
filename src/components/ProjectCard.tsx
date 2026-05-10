@@ -69,7 +69,7 @@ export default function ProjectCard({
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8 md:gap-16 items-start">
           <div>
             <p className="text-[11px] font-mono text-text-muted uppercase tracking-widest mb-2">{String(index + 1).padStart(2, "0")}</p>
-            <h3 className="text-xl md:text-2xl font-semibold tracking-tight mb-3">
+            <h3 className="text-xl md:text-2xl font-semibold tracking-tight mb-3 text-accent-brown">
               {project.title}
             </h3>
             <p className="text-text-secondary text-sm leading-relaxed mb-4 max-w-sm">
