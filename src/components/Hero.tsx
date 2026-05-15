@@ -103,22 +103,24 @@ export default function Hero() {
           transition={{ delay: 0.2, duration: 0.4 }}
           className="mt-5 group ascii-canvas-desktop"
         >
-          <div className="relative px-4 py-2 rounded-full bg-surface border border-border hover:border-text-muted/30 transition-all duration-200 cursor-pointer shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)] active:scale-[0.98]">
+          <div className="relative px-4 py-2 rounded-full bg-surface border border-border hover:border-text-muted/30 transition-all duration-200 cursor-pointer shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)] active:scale-[0.98] flex items-center gap-3">
+            <span className="text-[11px] text-text-muted select-none">░</span>
             <input
               type="range"
               min={40}
               max={200}
               value={density}
               onChange={(e) => setDensity(Number(e.target.value))}
-              className="w-28 h-[3px] appearance-none bg-border rounded-full cursor-pointer
-                [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3
-                [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:rounded-full
-                [&::-webkit-slider-thumb]:bg-text-primary [&::-webkit-slider-thumb]:border-0
+              className="w-28 h-[6px] appearance-none bg-border rounded-full cursor-pointer
+                [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4
+                [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full
+                [&::-webkit-slider-thumb]:bg-accent [&::-webkit-slider-thumb]:border-0
                 [&::-webkit-slider-thumb]:shadow-[0_0_0_3px_rgba(0,0,0,0.06)]
                 [&::-webkit-slider-thumb]:transition-shadow [&::-webkit-slider-thumb]:duration-150
                 [&::-webkit-slider-thumb]:hover:shadow-[0_0_0_5px_rgba(0,0,0,0.1)]
                 [&::-webkit-slider-thumb]:active:shadow-[0_0_0_6px_rgba(0,0,0,0.12)]"
             />
+            <span className="text-[11px] text-text-muted select-none">▓</span>
           </div>
         </motion.div>
       )}
