@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+*, *::before, *::after {
+  cursor: none !important;
+}
+
 @theme inline {
   --color-background: oklch(100% 0 0);
   --color-surface: oklch(97% 0.003 0);
