@@ -77,11 +77,11 @@ export default function ProjectCard({
               {project.description}
             </p>
             <p className="text-[11px] font-mono text-text-muted mb-4">{project.tags.join(", ")}</p>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               {project.caseStudyUrl && (
                 <Link
                   href={project.caseStudyUrl}
-                  className="text-sm text-text-primary hover:text-accent transition-colors"
+                  className="text-sm text-text-primary hover:text-accent transition-colors whitespace-nowrap"
                 >
                   Case Study &rarr;
                 </Link>
@@ -91,7 +91,7 @@ export default function ProjectCard({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-text-primary hover:text-accent transition-colors"
+                  className="text-sm text-text-primary hover:text-accent transition-colors whitespace-nowrap"
                 >
                   View Project &rarr;
                 </a>
@@ -101,7 +101,7 @@ export default function ProjectCard({
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-text-muted hover:text-text-primary transition-colors"
+                  className="text-sm text-text-muted hover:text-text-primary transition-colors whitespace-nowrap"
                 >
                   Source
                 </a>
@@ -180,11 +180,11 @@ export default function ProjectCard({
           {project.tags.join(", ")}
         </p>
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           {project.caseStudyUrl && (
             <Link
               href={project.caseStudyUrl}
-              className="text-xs font-medium text-text-primary hover:text-accent transition-colors"
+              className="text-xs font-medium text-text-primary hover:text-accent transition-colors whitespace-nowrap"
             >
               Case Study &rarr;
             </Link>
@@ -194,7 +194,7 @@ export default function ProjectCard({
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-medium text-text-primary hover:text-accent transition-colors"
+              className="text-xs font-medium text-text-primary hover:text-accent transition-colors whitespace-nowrap"
             >
               View Project &rarr;
             </a>
@@ -204,7 +204,7 @@ export default function ProjectCard({
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-text-muted hover:text-text-primary transition-colors"
+              className="text-xs text-text-muted hover:text-text-primary transition-colors whitespace-nowrap"
             >
               Source
             </a>

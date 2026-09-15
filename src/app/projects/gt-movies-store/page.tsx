@@ -130,12 +130,6 @@ export default function GTMoviesStoreCaseStudy() {
           </p>
         </section>
 
-        <section>
-          <h2 className={sectionHeading}>Demo Video</h2>
-          <div className="aspect-video rounded-lg border border-border bg-surface flex items-center justify-center">
-            <p className="text-sm font-mono text-text-muted">Demo video coming soon.</p>
-          </div>
-        </section>
       </div>
 
       <div className="mt-20 md:mt-28 pt-8 border-t border-border-subtle">
