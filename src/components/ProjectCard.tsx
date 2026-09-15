@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
 import type { Project } from "@/data/projects";
 import { SPRING } from "@/lib/animation";
@@ -77,6 +78,14 @@ export default function ProjectCard({
             </p>
             <p className="text-[11px] font-mono text-text-muted mb-4">{project.tags.join(", ")}</p>
             <div className="flex items-center gap-4">
+              {project.caseStudyUrl && (
+                <Link
+                  href={project.caseStudyUrl}
+                  className="text-sm text-text-primary hover:text-accent transition-colors"
+                >
+                  Case Study &rarr;
+                </Link>
+              )}
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
@@ -172,6 +181,14 @@ export default function ProjectCard({
         </p>
 
         <div className="flex items-center gap-4">
+          {project.caseStudyUrl && (
+            <Link
+              href={project.caseStudyUrl}
+              className="text-xs font-medium text-text-primary hover:text-accent transition-colors"
+            >
+              Case Study &rarr;
+            </Link>
+          )}
           {project.liveUrl && (
             <a
               href={project.liveUrl}

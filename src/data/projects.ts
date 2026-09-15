@@ -5,9 +5,20 @@ export interface Project {
   image?: string;
   liveUrl?: string;
   githubUrl?: string;
+  caseStudyUrl?: string;
 }
 
 export const projects: Project[] = [
+  {
+    title: "GT Movies Store",
+    image: "/projects/gt-movies-store.png",
+    description:
+      "A full-stack movie store built with Django where users can browse and search movies, manage a shopping cart, purchase titles, track orders, and create, edit, delete, and report movie reviews.",
+    tags: ["Django", "Python", "SQLite", "Bootstrap"],
+    liveUrl: "https://lynjung0804.pythonanywhere.com/",
+    githubUrl: "https://github.com/lynjung/moviesstore",
+    caseStudyUrl: "/projects/gt-movies-store",
+  },
   {
     title: "Mount",
     image: "/projects/mountmoney.png",
