@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { instrumentSans, jetbrainsMono, pinyonScript } from "@/lib/fonts";
-import StrawberryCursor from "@/components/StrawberryCursor";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,10 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${instrumentSans.variable} ${jetbrainsMono.variable} ${pinyonScript.variable}`}>
-      <body className="cursor-none">
-        <StrawberryCursor />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
