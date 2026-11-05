@@ -34,6 +34,8 @@ export default function Nav() {
             <a
               key={item.href}
               href={item.href}
+              target={item.href.endsWith(".pdf") ? "_blank" : undefined}
+              rel={item.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
               className="group relative text-[13px] text-text-muted hover:text-text-primary transition-colors"
             >
               {item.label}
@@ -81,7 +83,13 @@ export default function Nav() {
                 <motion.a
                   key={item.href}
                   href={item.href}
+                  target={item.href.endsWith(".pdf") ? "_blank" : undefined}
+                  rel={item.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
                   onClick={(e) => {
+                    if (!item.href.startsWith("#")) {
+                      setMobileOpen(false);
+                      return;
+                    }
                     e.preventDefault();
                     setMobileOpen(false);
                     setTimeout(() => {
